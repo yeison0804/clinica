@@ -9,8 +9,11 @@ import java.nio.MappedByteBuffer;
 public class Cita implements Serializable {
     @Id
     String codigo;
+    @Column(nullable = false)
     String fecha_creacion;
+    @Column(nullable = false)
     String fecha_cita;
+    @Column(nullable = false)
     String motivo;
 
     @ManyToOne
@@ -20,6 +23,9 @@ public class Cita implements Serializable {
     @ManyToOne
     @JoinColumn(name="Cedula_paciente")
     Paciente paciente;
+
+    @OneToOne(mappedBy = "cita")
+    Atencion atencion;
 
    @Enumerated(EnumType.STRING)
    private Estado_Cita estadoCita;

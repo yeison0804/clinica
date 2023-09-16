@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,8 +16,11 @@ import java.util.List;
 public class Pqrs implements Serializable {
     @Id
     String codigo;
-    String fecha_creacion;
+    @Column(nullable = false)
+    Date fecha_creacion;
+    @Column(nullable = false)
     String tipo;
+    @Column(nullable = false)
     String motivo;
     @ManyToOne
     @JoinColumn(name="Codigo_cita")

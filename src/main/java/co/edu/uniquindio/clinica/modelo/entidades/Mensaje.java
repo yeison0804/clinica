@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.Date;
+
 @Entity
 @Setter
 @Getter
@@ -15,7 +17,9 @@ public class Mensaje implements Serializable {
 
     @Id
     String codigo;
-    String fecha_creacion;
+    @Column(nullable = false)
+    Date fecha_creacion;
+    @Column(nullable = false)
     String mensaje;
 
     @ManyToOne

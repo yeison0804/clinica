@@ -13,6 +13,8 @@ import java.io.Serializable;
 public class Dia_Libre implements Serializable {
     @Id
     String codigo;
+
+    @Column(nullable = false)
     String dia;
 
     @ManyToOne

@@ -16,8 +16,11 @@ public class Horario implements Serializable {
 
     @Id
     String codigo;
+    @Column(nullable = false)
     String dia;
+    @Column(nullable = false)
     String hora_inicio;
+    @Column(nullable = false)
     String hora_fin;
 
     @ManyToOne

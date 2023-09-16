@@ -20,12 +20,15 @@ public class Paciente  extends Usuario implements Serializable{
     int codigo;
     @Column(nullable =false)
     Date fecha_nacimiento;
+    @Column(nullable = false,length = 600)
     String alergias;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Tipo_Sangre Codigotipo_sangre;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private EPS Codigoeps;
 
     @OneToMany(mappedBy = "paciente")

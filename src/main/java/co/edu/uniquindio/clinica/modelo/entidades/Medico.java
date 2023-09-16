@@ -17,6 +17,7 @@ public class Medico extends Usuario implements Serializable {
     @Id
     int codigo;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Especialidad codigoEspecialidad;
 
     @OneToMany(mappedBy="medico")

@@ -18,8 +18,11 @@ public class Usuario extends Cuenta implements Serializable {
 
    @Id
     int codigo;
+   @Column(nullable = false)
     String nombre;
+   @Column(nullable = false)
     String telefono;
+   @Column(nullable = false)
     String url_foto;
     @Enumerated(EnumType.STRING)
     private Ciudad codigoCiudad;

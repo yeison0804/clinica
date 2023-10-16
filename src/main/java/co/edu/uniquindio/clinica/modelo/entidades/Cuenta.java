@@ -17,6 +17,7 @@ import java.util.Objects;
 public class Cuenta implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
     @Column(nullable = false)
     private String correo;

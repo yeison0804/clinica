@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -17,9 +18,10 @@ import java.util.List;
 @DiscriminatorValue("paciente")
 public class Paciente  extends Usuario implements Serializable{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int codigo;
     @Column(nullable =false)
-    Date fecha_nacimiento;
+    LocalDate fecha_nacimiento;
     @Column(nullable = false,length = 600)
     String alergias;
 
@@ -34,6 +36,6 @@ public class Paciente  extends Usuario implements Serializable{
     @OneToMany(mappedBy = "paciente")
     private List<Cita> citas;
 
-
+    String cedula;
 
 }

@@ -19,6 +19,8 @@ public enum Especialidad {
         this.nombre = nombre;
     }
 
+
+
     public String getCodigo() {
         return codigo;
     }

@@ -32,4 +32,8 @@ public class Pqrs implements Serializable {
     @Enumerated(EnumType.STRING)
     private Estado_PQRS codigo_estado;
 
+    private boolean estado;
+    private String nombrePaciente;
+
+
 }

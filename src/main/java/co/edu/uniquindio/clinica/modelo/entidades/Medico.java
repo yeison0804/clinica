@@ -29,6 +29,11 @@ public class Medico extends Usuario implements Serializable {
     @OneToMany(mappedBy = "medico")
     private List<Cita> citas;
 
+    private boolean estado;
+
+    String cedula;
+
+
 
 
 

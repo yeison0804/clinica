@@ -1,6 +1,7 @@
 package co.edu.uniquindio.clinica.dto;
 import co.edu.uniquindio.clinica.modelo.entidades.Ciudad;
 import co.edu.uniquindio.clinica.modelo.entidades.Especialidad;
+import co.edu.uniquindio.clinica.modelo.entidades.Estado_Cita;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public record MedicoDTO(
         String password,
         List< HorarioDTO > horarios,
         String urlFoto,
-        boolean estado
+        Estado_Cita estado
 
 
 ) {

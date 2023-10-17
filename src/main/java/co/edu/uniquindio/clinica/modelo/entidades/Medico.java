@@ -33,7 +33,9 @@ public class Medico extends Usuario implements Serializable {
 
     String cedula;
 
-
+    public void setId(int codigo) {
+        this.codigo = codigo;
+    }
 
 
 

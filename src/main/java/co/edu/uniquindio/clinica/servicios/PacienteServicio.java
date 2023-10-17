@@ -1,6 +1,7 @@
 package co.edu.uniquindio.clinica.servicios;
 
 import co.edu.uniquindio.clinica.dto.DetallePacienteDTO;
+import co.edu.uniquindio.clinica.dto.MedicoDTO;
 import co.edu.uniquindio.clinica.dto.PacienteDTO;
 import co.edu.uniquindio.clinica.modelo.entidades.Paciente;
 
@@ -31,7 +32,7 @@ public interface PacienteServicio {
 
     void filtrarCitasPorFecha()throws Exception;
 
-    void filtrarCitasPorMedico()throws Exception;
+    void filtrarCitasPorMedico(MedicoDTO medicoDTO)throws Exception;
 
     void verDetalleCita()throws Exception;
 

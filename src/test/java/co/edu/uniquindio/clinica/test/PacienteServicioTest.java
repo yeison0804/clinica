@@ -1,9 +1,9 @@
 package co.edu.uniquindio.clinica.test;
 import co.edu.uniquindio.clinica.dto.DetallePacienteDTO;
+import co.edu.uniquindio.clinica.dto.HorarioDTO;
+import co.edu.uniquindio.clinica.dto.MedicoDTO;
 import co.edu.uniquindio.clinica.dto.PacienteDTO;
-import co.edu.uniquindio.clinica.modelo.entidades.Ciudad;
-import co.edu.uniquindio.clinica.modelo.entidades.EPS;
-import co.edu.uniquindio.clinica.modelo.entidades.Tipo_Sangre;
+import co.edu.uniquindio.clinica.modelo.entidades.*;
 import co.edu.uniquindio.clinica.servicios.PacienteServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
@@ -111,8 +112,31 @@ public class PacienteServicioTest {
         Assertions.assertEquals(2, lista.size());
     }
 
+    @Test
+    // @Sql("classpath:dataset.sql" )
+    public void filtrarCitaMedicoTest() throws Exception{
+
+        // Supongamos que HorarioDTO tiene un constructor que acepta los datos necesarios
+        HorarioDTO horario1 = new HorarioDTO("04", "5:00", "8:00");
+        HorarioDTO horario2 = new HorarioDTO("05", "9:00", "12:00");
+
+        // Crear la lista de horarios y añadir los horarios
+        List<HorarioDTO> horarios = new ArrayList<>();
+        horarios.add(horario1);
+        horarios.add(horario2);
+
+        MedicoDTO medicoDTO = new MedicoDTO("andres", 3,Ciudad.CALI,Especialidad.ESPECIALIDAD_2,
+                "23344455","juan@uniquindio","67777",horarios,"45555555",
+                Estado_Cita.PENDIENTE);
 
 
+         pacienteServicio.filtrarCitasPorMedico(medicoDTO);
 
+        Assertions.assertThrows(Exception.class, () -> pacienteServicio.verDetallePaciente(1));
+
+
+    }
 
 }
+
+

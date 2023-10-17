@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface AdministradorServicio {
 
-    String crearMedico(MedicoDTO medico) throws Exception;
+    int crearMedico(MedicoDTO medico) throws Exception;
 
     String actualizarMedico(InfoMedicoDTO infoMedicoDTO) throws Exception;
 

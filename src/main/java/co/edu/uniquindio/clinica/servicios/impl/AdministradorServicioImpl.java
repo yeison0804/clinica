@@ -28,7 +28,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
 
     @Override
-    public String crearMedico(MedicoDTO medicoDTO) throws Exception {
+    public int crearMedico(MedicoDTO medicoDTO) throws Exception {
         Medico medico = new Medico();
         medico.setCodigo(medicoDTO.codigo());
         medico.setNombre(medicoDTO.nombre());
@@ -38,11 +38,12 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         medico.setCodigoCiudad(medicoDTO.codigoCiudad());
         medico.setCorreo(medicoDTO.correo());
         medico.setPassword(medicoDTO.password());
+        medico.setTelefono(medicoDTO.telefono());
 
 
      Medico medicoNuevo=medicoRepo.save(medico);
 
-        return "medico creado con exito";
+        return medicoNuevo.getCodigo();
     }
 
     @Override

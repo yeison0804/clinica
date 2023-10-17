@@ -24,4 +24,3 @@ VALUES
 INSERT INTO paciente (codigo, fecha_nacimiento, alergias, cedula, codigotipo_sangre,codigoeps)
 VALUES
     ('2', '1990-01-01', 'Sin alergias', '24567234', 1, 1);
-

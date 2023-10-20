@@ -78,10 +78,10 @@ public class AdministradorServicioImpl implements AdministradorServicio {
             throw new Exception("el codigo" + codigo + "no existe");
 
         }
-
-        Medico obtenido = buscado.get();
-        obtenido.setEstado(false);
-        medicoRepo.save(obtenido);
+        medicoRepo.delete(buscado.get());
+      //  Medico obtenido = buscado.get();
+      //  obtenido.setEstado(false);
+      //  medicoRepo.save(obtenido);
         return "Se ha eliminado el medico";
     }
 
@@ -93,15 +93,14 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
         for (Medico medico:medicos) {
 
-            if(medico.isEstado()){
 
                 respuesta.add(new MedicoDTOAdmin(
                          medico.getCodigo(),
                          medico.getNombre(),
                          medico.getUrl_foto(),
                          medico.getCodigoEspecialidad()));
-            }
-            
+
+
         }
 
 
@@ -141,9 +140,9 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
         for (Pqrs pqrs:pqrs1) {
 
-            if(pqrs.isEstado()){
+            if(pqrs.isEstadoPqr()){
                 respuesta.add(new PQRSDTOAdmin(  pqrs.getCodigo(),
-                        pqrs.getCodigo_estado(),
+                        pqrs.getEstado(),
                         pqrs.getFecha_creacion(),
                         pqrs.getCita().getPaciente().getNombre()));
 
@@ -193,7 +192,6 @@ public class AdministradorServicioImpl implements AdministradorServicio {
         Pqrs pqrs = opcional.get();
 
         return new InfoPQRSDTO(pqrs.getCodigo(),
-                pqrs.getCodigo_estado(),
                 pqrs.getCita().getCodigo(),
                 pqrs.getMotivo(),
                 pqrs.getNombrePaciente(),
@@ -230,7 +228,7 @@ public class AdministradorServicioImpl implements AdministradorServicio {
     }
 
     @Override
-    public void cambiarEstadoPQRS(String codigoPQRS, boolean estadoPQRS) throws Exception {
+    public void cambiarEstadoPQRS(String codigoPQRS, Estado_PQRS estadoPQRS) throws Exception {
 
         Optional<Pqrs> opcional = pqrsRepo.findById(codigoPQRS);
 
@@ -248,6 +246,22 @@ public class AdministradorServicioImpl implements AdministradorServicio {
 
     }
 
+    @Override
+    public InfoMedicoDTO verDetalleMedico(int codigo) throws Exception {
+
+        Optional<Medico> medicoBuscado = medicoRepo.findById(codigo);
+
+        if( medicoBuscado.isEmpty() ){
+            throw new Exception("No existe un medico con el código "+codigo);
+        }
+
+        Medico medico = medicoBuscado.get();
+
+
+        return new InfoMedicoDTO(medico.getCodigo(),medico.getNombre(),medico.getCedula(),
+                medico.getCodigoCiudad(),medico.getCodigoEspecialidad(),medico.getTelefono(),
+                medico.getCorreo(),medico.getHorariosLibres(),medico.getUrl_foto());
+    }
 
 
     private void AsignarHorariosMedico(Medico medico,List<HorarioDTO>horarios){

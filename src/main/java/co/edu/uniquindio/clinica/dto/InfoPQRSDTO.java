@@ -1,6 +1,8 @@
 package co.edu.uniquindio.clinica.dto;
 
+import co.edu.uniquindio.clinica.modelo.entidades.Cita;
 import co.edu.uniquindio.clinica.modelo.entidades.Estado_PQRS;
+import co.edu.uniquindio.clinica.modelo.entidades.Mensaje;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -10,12 +12,12 @@ public record InfoPQRSDTO(
 
 
         String codigo,
-        Estado_PQRS estado,
+
         String codigoCita,
         String motivo,
         String nombrePaciente,
         Date fecha,
-        List<String> mensajes
+        List<Mensaje> mensajes
 ) {
 
 

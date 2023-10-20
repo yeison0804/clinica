@@ -30,10 +30,11 @@ public class Pqrs implements Serializable {
     private List<Mensaje> mensajes;
 
     @Enumerated(EnumType.STRING)
-    private Estado_PQRS codigo_estado;
+    private Estado_PQRS estado;
 
-    private boolean estado;
+    private boolean estadoPqr;
     private String nombrePaciente;
+
 
 
 }

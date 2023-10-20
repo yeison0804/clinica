@@ -26,7 +26,8 @@ public interface AdministradorServicio {
 
     List<CitaDTOAdmin> listarCitas() throws Exception;
 
-    void cambiarEstadoPQRS(String codigoPQRS, boolean estadoPQRS) throws Exception;
+    void cambiarEstadoPQRS(String codigoPQRS, Estado_PQRS estadoPQRS) throws Exception;
+    InfoMedicoDTO verDetalleMedico(int codigo)throws Exception;
 
 
 

@@ -1,4 +1,3 @@
-
 INSERT INTO cuenta (codigo, correo, password, type_usuario) VALUES (1, 'pepito@email.com', '123', 'tipo_usuario_1');
 
 -- Para el segundo registro
